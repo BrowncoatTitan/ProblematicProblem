@@ -8,7 +8,7 @@ namespace ProblematicProblem
     {
         static Random rng = new Random();
         static bool cont = true;
-        static List<string> activities = new List<string>() { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" };
+        static List<string> activities = new List<string>() { /*"Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking",*/ "Axe Throwing", "Wine Tasting" };
 
 
 
@@ -83,12 +83,14 @@ namespace ProblematicProblem
                         int randomNum = rng.Next(activities.Count);
                         string randomAct = activities[randomNumber];
                         Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
-                        Console.WriteLine("Pick something else!");
+                        Console.WriteLine("We are picking something else!");
                         activities.Remove(randomActivity);
+                        randomNumber = rng.Next(activities.Count);
+                        randomActivity = activities[randomNumber];
                     }
                     Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
                     Console.WriteLine();
-                    string input5 =Console.ReadLine();
+                    string input5 = Console.ReadLine();
                     if (input5.ToLower() == "keep") { chooseActivity = false; }
                 }
             }
